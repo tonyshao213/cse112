@@ -1,0 +1,257 @@
+head	1.10;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.10
+date	2021.06.02.02.23.40;	author -;	state -;
+branches;
+next	1.9;
+
+1.9
+date	2021.06.02.02.23.20;	author -;	state -;
+branches;
+next	1.8;
+
+1.8
+date	2021.05.29.16.21.26;	author -;	state -;
+branches;
+next	1.7;
+
+1.7
+date	2021.05.29.10.56.19;	author -;	state -;
+branches;
+next	1.6;
+
+1.6
+date	2021.05.29.09.12.32;	author -;	state -;
+branches;
+next	1.5;
+
+1.5
+date	2021.05.29.09.12.08;	author -;	state -;
+branches;
+next	1.4;
+
+1.4
+date	2021.05.29.09.11.25;	author -;	state -;
+branches;
+next	1.3;
+
+1.3
+date	2021.05.29.09.09.52;	author -;	state -;
+branches;
+next	1.2;
+
+1.2
+date	2021.05.29.09.06.54;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2021.03.04.23.35.29;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.10
+log
+@-
+@
+text
+@#!/usr/bin/perl
+# $Id: subst-macros.perl,v 1.9 2021-06-01 19:23:20-07 - - $
+
+# Example substituting macros in a command.
+
+use strict;
+use warnings;
+
+my %MACROS = (
+  'ABC' => {
+    'LINE' => '12',
+    'VALUE' => 'DEF'
+  },
+  'THERE' => {
+    'LINE' => '14',
+    'VALUE' => 'there is a thing'
+  },
+  'THING' => {
+    'LINE' => '13',
+    'VALUE' => 'echo what do we want'
+  }
+);
+
+my $prereq = "hello.c";
+my @@commands = (
+   'echo /${ABC}/${FOOBAR}/${THING}/',
+   'gcc -c $<',
+   'echo $$?',
+);
+
+for my $command (@@commands) {
+   print "Before: $command\n";
+   $command =~ s/\${(.*?)}/$MACROS{$1}{VALUE}||""/ge;
+   $command =~ s/\$</$prereq/;
+   $command =~ s/\$\$/\$/;
+   print "After: $command\n";
+}
+
+@
+
+
+1.9
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: subst-macros.perl,v 1.8 2021-05-29 09:21:26-07 - - $
+d33 1
+a33 1
+   $command =~ s/\${(.*?)}/defined($MACROS{$1}{VALUE})||""/ge;
+@
+
+
+1.8
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: subst-macros.perl,v 1.7 2021-05-29 03:56:19-07 - - $
+d33 1
+a33 1
+   $command =~ s/\${(.*?)}/$MACROS{$1}{VALUE}||""/ge;
+@
+
+
+1.7
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: subst-macros.perl,v 1.6 2021-05-29 02:12:32-07 - - $
+d36 1
+a36 1
+   print "After: $command\n\n";
+@
+
+
+1.6
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: subst-macros.perl,v 1.5 2021-05-29 02:12:08-07 - - $
+d26 1
+a26 1
+   'echo /${ABC}/${FOOBBAR}/${THING}/',
+@
+
+
+1.5
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: subst-macros.perl,v 1.4 2021-05-29 02:11:25-07 - - $
+d32 1
+a32 1
+   print "Before: \"$command\"\n";
+d36 1
+a36 1
+   print "After: \"$command\"\n\n";
+@
+
+
+1.4
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: subst-macros.perl,v 1.3 2021-05-29 02:09:52-07 - - $
+d26 1
+a26 1
+   'echo /${ABC}/${THERE}/${FOOBAR}/',
+@
+
+
+1.3
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: subst-macros.perl,v 1.2 2021-05-29 02:06:54-07 - - $
+d32 5
+a36 5
+   print "\nBefore: \"$command\"\n";
+   $command_ =~ s/\${(.*?)}/$MACROS{$1}{VALUE}||""/ge;
+   $command_ =~ s/\$</$prereq/;
+   $command_ =~ s/\$\$/\$/;
+   print "\nAfter: \"$command\"\n";
+@
+
+
+1.2
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: subst-macros.perl,v 1.1 2021-03-04 15:35:29-08 - - $
+a29 2
+print "\nBefore:\n";
+map {print "$_\n"} @@commands;
+d31 7
+a37 8
+map {
+   $_ =~ s/\${(.*?)}/$MACROS{$1}{VALUE}||""/ge;
+   $_ =~ s/\$</$prereq/;
+   $_ =~ s/\$\$/\$/;
+} @@commands;
+
+print "\nAfter:\n";
+map {print "$_\n"} @@commands;
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id$
+d9 13
+a21 3
+my %macro=(
+   "FOO"=>'foo',
+   "BAR"=>'bar',
+d26 1
+a26 1
+   'echo /${FOO}/${QUX}/${BAR}/',
+d34 1
+a34 1
+   $_ =~ s/\${(.*?)}/$macro{$1}||""/ge;
+@

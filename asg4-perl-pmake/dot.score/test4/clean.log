@@ -1,0 +1,6 @@
+rm main.o hello.o hello
+rm: cannot remove ‘main.o’: No such file or directory
+rm: cannot remove ‘hello.o’: No such file or directory
+rm: cannot remove ‘hello’: No such file or directory
+pmake: [Makefile:22: 
+                  clean] Error 1 (ignored)

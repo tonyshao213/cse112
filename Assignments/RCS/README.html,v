@@ -1,0 +1,54 @@
+head	1.2;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.2
+date	2020.07.30.19.12.07;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2020.06.25.17.21.44;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@-
+@
+text
+@<P>
+<TT>project-description.jpg</TT>
+<P>
+<A HREF=project-description.jpg>
+<IMG
+SRC="project-description.jpg"
+ALT="project-description.jpg"
+>
+</A>
+<P>
+<TT>$Id: README.html,v 1.1 2020-06-25 10:21:44-07 - - $</TT>
+<P>
+@
+
+
+1.1
+log
+@-
+@
+text
+@d1 3
+d11 2
+a12 3
+<TT>project-description.jpg</TT>
+<BR>
+<TT>$Id: README.html,v 1.1 2019-12-16 13:04:23-08 - - $</TT>
+@

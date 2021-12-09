@@ -1,0 +1,6 @@
+interp-dim: expr: a 
+interp-dim: expr: size 
+expr: undefined;
+ cannot reference an identifier before its definition
+  in module: top-level
+interp-let: got in case if pair? (car expr) 

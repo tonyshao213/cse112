@@ -1,0 +1,44 @@
+head	1.2;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.2
+date	2021.01.20.20.37.31;	author -;	state -;
+branches;
+next	1.1;
+
+1.1
+date	2021.01.20.20.37.08;	author -;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.2
+log
+@-
+@
+text
+@# $Id$
+        goto nolabel
+        dim a[10]
+        let a[50] = 3
+        let noarray[5] = a[90]
+@
+
+
+1.1
+log
+@-
+@
+text
+@d1 1
+a1 1
+# #Id$
+@
